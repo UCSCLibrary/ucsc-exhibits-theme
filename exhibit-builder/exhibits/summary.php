@@ -1,4 +1,8 @@
-<?php echo head(array('title' => metadata('exhibit', 'title'), 'bodyclass'=>'exhibits summary')); ?>
+<?php
+echo head(array(
+                'title' => metadata('exhibit', 'title'),
+                'bodyclass'=>'exhibits summary',
+                'exhibitBanner'=>ucsc_get_exhibit_banner(get_current_record('exhibit')->id))); ?>
 
 <div id="exhibit-nav">
 

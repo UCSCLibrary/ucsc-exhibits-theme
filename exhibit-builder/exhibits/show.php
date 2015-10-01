@@ -1,13 +1,14 @@
 <?php
 echo head(array(
-    'title' => metadata('exhibit_page', 'title') . ' &middot; ' . metadata('exhibit', 'title'),
-    'bodyclass' => 'exhibits show'));
-?>
+                'title' => metadata('exhibit_page', 'title') . ' &middot; ' . metadata('exhibit', 'title'),
+                'bodyclass' => 'exhibits show',
+                'exhibitBanner'=>ucsc_get_exhibit_banner(get_current_record('exhibit')->id))); ?>
+
 <div id="exhibit-nav">
   <nav id="exhibit-pages">
   	  
   	  <ul>
-        <li><a id="exhibit-home" href="/"><?php echo metadata('exhibit', 'title'); ?></a></li>
+        <li><a id="exhibit-home" href="<?php echo exhibit_builder_exhibit_uri(get_current_record('exhibit'));?>"><?php echo metadata('exhibit', 'title'); ?></a></li>
         <?php set_exhibit_pages_for_loop_by_exhibit(); ?>
         <?php foreach (loop('exhibit_page') as $exhibitPage): ?>
         <?php echo exhibit_builder_page_summary($exhibitPage); ?>
