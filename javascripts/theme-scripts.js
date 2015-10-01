@@ -98,55 +98,57 @@ jQuery(document).ready(function() {
 	  	});
 	};
 	
-/* Add active class and hide sub-items of non-active menu items */
-		
-		jQuery(function () {
-		  	setNavigation();
-		});
-  
-		function setNavigation() {
-			var path = window.location.pathname;
-			path = path.replace(/\/$/, "");
-			path = decodeURIComponent(path);
-			jQuery('nav#exhibit-pages a').each(function () {
-				var href = jQuery(this).attr('href');
-				if (path === href) {
-				  jQuery(this).parent().addClass('active');
-				}
-			});
-			jQuery('nav#exhibit-pages li ul li').addClass('hidden-nav');
-			jQuery('nav#exhibit-pages li.active').children('ul').children('li').removeClass('hidden-nav');
-			jQuery('nav#exhibit-pages li.active').removeClass('hidden-nav');
-			jQuery('nav#exhibit-pages li.active').siblings().removeClass('hidden-nav');
-			jQuery('nav#exhibit-pages li.active').parents().removeClass('hidden-nav');
-			jQuery('nav#exhibit-pages li.active').parents().siblings().removeClass('hidden-nav');
-			jQuery('*[class=""]').removeAttr('class');
-		}
-	
 /* Scripts for exhibit pages */
 
 	if(jQuery( 'body' ).hasClass( 'exhibits' )){
 	
-/* Add banner images and link to main exhibit page link */
+/* Link to main exhibit page link */
 
-		var firstUrl = jQuery('nav#exhibit-pages ul li + li a').attr('href');
-	  	var endUrl = firstUrl.substring(firstUrl.lastIndexOf('/'));
-	  	var homeLink = firstUrl.replace(endUrl, '');
-		var exhibitName = homeLink.substr(homeLink.lastIndexOf('/') + 1);
-		var bannerPath = '<div id="banner-img"><img src="/themes/ucsc-omeka/images/' + exhibitName + '.jpg"></div>';
-		jQuery(bannerPath).insertBefore('div#content');
-	  	jQuery('a#exhibit-home').attr("href", homeLink);
+	    var firstUrl = jQuery('nav#exhibit-pages ul li + li a').attr('href');
+	    var endUrl = firstUrl.substring(firstUrl.lastIndexOf('/'));
+	    var homeLink = firstUrl.replace(endUrl, '');
+	    jQuery('a#exhibit-home').attr("href", homeLink);
 		
 /* Add image to main exhibit page */
 
-	if(jQuery('body.summary div.exhibit-description address').length > 0){
-		jQuery('div.exhibit-description address').addClass('hidden');
-		jQuery('div.exhibit-description pre').addClass('hidden');
-		imgNum = jQuery('body.summary div.exhibit-description address').text();
-		itemNum = jQuery('body.summary div.exhibit-description pre').text();
-		imgLink = '<div id="exhibit-image"><a href="/exhibits/show/' + exhibitName + '/item/' + itemNum + '"><img title="Main Exhibit Image" alt="Main Exhibit Image" src="/files/square_thumbnails/' + imgNum + '.jpg"></a></div>';
-		jQuery('div#exhibit-content').prepend(imgLink);
-	};
+		if(jQuery('body.summary div.exhibit-description address').length > 0){
+			jQuery('div.exhibit-description address').addClass('hidden');
+			jQuery('div.exhibit-description pre').addClass('hidden');
+			imgNum = jQuery('body.summary div.exhibit-description address').text();
+			itemNum = jQuery('body.summary div.exhibit-description pre').text();
+			imgLink = '<div id="exhibit-image"><a href="/exhibits/show/' + exhibitName + '/item/' + itemNum + '"><img title="Main Exhibit Image" alt="Main Exhibit Image" src="/files/square_thumbnails/' + imgNum + '.jpg"></a></div>';
+			jQuery('div#exhibit-content').prepend(imgLink);
+		};
+		
+		/* Add active class and hide sub-items of non-active menu items */
+		var path = window.location.pathname;
+		path = path.replace(/\/$/, "");
+		path = decodeURIComponent(path);
+		jQuery('nav#exhibit-pages a').each(function () {
+			var href = jQuery(this).attr('href');
+			jQuery(this).parent().addClass('nav-item');
+			if (path === href) {
+			  jQuery(this).parent().addClass('active');
+			  jQuery(this).parent().children('.nav-item').addClass('active-path');
+			  jQuery(this).parents('.nav-item').addClass('active-path');
+			}
+		});
+		jQuery('nav#exhibit-pages a').each(function () {
+			if (jQuery(this).parent().children().length>1) {
+				if (jQuery(this).parent().hasClass('active-path')) {
+					jQuery(this).append('<img class="navarrow" src="/themes/ucsc-omeka/images/arrow-open.png" alt="open arrow">');
+				} else {
+					jQuery(this).append('<img class="navarrow" src="/themes/ucsc-omeka/images/arrow-closed.png" alt="closed arrow">');
+				}
+			}
+		});
+		jQuery('nav#exhibit-pages li ul li').addClass('hidden-nav');
+		jQuery('nav#exhibit-pages li.active').children('ul').children('li').removeClass('hidden-nav');
+		jQuery('nav#exhibit-pages li.active').removeClass('hidden-nav');
+		jQuery('nav#exhibit-pages li.active').siblings().removeClass('hidden-nav');
+		jQuery('nav#exhibit-pages li.active').parents().removeClass('hidden-nav');
+		jQuery('nav#exhibit-pages li.active').parents().siblings().removeClass('hidden-nav');
+		jQuery('*[class=""]').removeAttr('class');
 	
 	};
 });
