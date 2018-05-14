@@ -1,0 +1,1 @@
+An omeka theme for the UC Santa Cruz digital exhibits website.
