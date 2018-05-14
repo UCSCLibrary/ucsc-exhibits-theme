@@ -53,7 +53,7 @@ audio:not([controls]) {
  *    user zoom.
  */
 html {
-  font-family: "Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
@@ -470,9 +470,11 @@ table {
   a:hover {
 	  text-decoration: underline;
   }
-  /*a:active {
+  
+  a:active {
     color: #003368;
-  }*/
+  }
+  
   a img {
     margin-bottom: -2px;
     vertical-align: sub;
@@ -530,7 +532,7 @@ table {
   }
 
   .active > a {
-    background-color: #ece9d8;
+    background-color: #ddd;
   }
 
   /* == Formalize Styles == */
@@ -1150,6 +1152,11 @@ table {
     display: inline;
   }
 
+  .navarrow {
+	float: right;
+	padding: 5px;
+  }
+
   .mobile {
     border-top: 0;
   }
@@ -1348,7 +1355,7 @@ table {
     display: block;
     margin: 16px auto;
     width: 150px;
-	background-color: #ece9d8;
+	background-color: #ddd;
     border: 1px solid #dfdfdf;
     border-radius: 4px;
     color: #00458c;
@@ -1360,7 +1367,7 @@ table {
   }
   
   body.item p.more:hover {
-	background-color: #DBD8C9;  
+	background-color: #bbb;  
   }
   
   div#dublin-core-title {
@@ -1576,7 +1583,7 @@ table {
   }
   
   #home #primary h2 {
-	background-color: #E8E4D0;
+	background-color: #ddd;
     font-size: 19.2px;
     font-weight: 400;
     margin: 0;
@@ -1591,7 +1598,7 @@ table {
   
   #home #secondary h2 {
 	border: 1px solid #cbcac9; 
-    color: #8c8a87;
+    /*color: #8c8a87;*/
     font-size: 19.2px;
     font-weight: 400;
     margin: 0 0 10px;
@@ -1602,13 +1609,17 @@ table {
   
   #home #feature-row {
 	  background-color: #fff;
-	  border: 1px solid #E8E4D0;
+	  border: 1px solid #ddd;
   }
   
   #home div.featured-content {
 	  background-color: #fff;
 	  border: 1px solid #cbcac9;
 	  border-top: none; 
+  }
+  
+  div.featured-second p.item-description {
+	  visibility: hidden;
   }
   
   div#digital-collections p {
@@ -1628,7 +1639,7 @@ table {
   }
   
   #home div.homepage-text {
-	background-color: #e8e4d0;
+	background-color: #ddd;
 	padding: 0 20px;
   }
   
@@ -1831,7 +1842,7 @@ table {
   }
   
   nav#exhibit-pages ul li a:hover {
-	background-color: #ece9d8;
+	background-color: #ddd;
   }
   
   nav#exhibit-pages ul li {
@@ -1857,15 +1868,18 @@ table {
 /* UCSC-Omeka theme overrides */
 
 body{
-	background-color:#f5f4eb;
-	color:#676661;
-	font-family:"Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+	/*background-color:#f5f4eb;
+	color:#676661;*/
+	background-color:#fff;
+	color:#000;
+	font-family: Roboto,"Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-weight:400;
 	font-size:16px;
 	line-height:1.4em;
 	text-rendering:optimizeLegibility;
 	margin:0 auto;
-	min-width:19.375em}
+	min-width:19.375em;
+}
 
 #logo {
 	background: url("http://static.ucsc.edu/_responsive/images/logos/ucsc-logotype.svg") no-repeat scroll left top rgba(0, 0, 0, 0);
@@ -1885,7 +1899,7 @@ body{
     margin: 0;
 }
 
-  h1#site-name {
+h1#site-name {
 	float: none;	
   }
 
@@ -1919,6 +1933,28 @@ body.item div.element h3, body.item div#collection h3 {
 
 body.item div#collection h3 {
 	margin-bottom: -16px;	
+}
+
+.layout-file .exhibit-items {
+    width: -moz-max-content;
+    width: -webkit-min-content;
+    max-width: max-content;
+}
+
+.layout-file .exhibit-items.left {
+	width: 100%;	
+}
+
+.layout-file .exhibit-items img {
+	max-width: 100%
+}
+
+div.layout-gallery {
+padding-top: 15px;
+}
+
+.layout-file .exhibit-items.center {
+    width: 100%;
 }
 
 }

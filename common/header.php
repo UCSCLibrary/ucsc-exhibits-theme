@@ -82,6 +82,6 @@
         <div class="menu-button">Menu</div>
             
         <div id="wrap">
-            
+            <?php echo @$exhibitBanner;?>            
             <div id="content">
                 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>

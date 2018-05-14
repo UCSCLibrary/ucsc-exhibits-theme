@@ -1,15 +1,6 @@
 <?php echo head(array('bodyid'=>'home', 'bodyclass' =>'two-col')); ?>
-
-<!-- Nivo Slider Markup -->
-<div id="banner">
-    <div id="slider" class="nivoSlider">
-        <a href="/"><img src="/themes/ucsc-omeka/nivo-slides/01.jpg" alt="slideshow image" /></a>
-        <a><img src="/themes/ucsc-omeka/nivo-slides/02.jpg" alt="slideshow image" /></a>
-        <a><img src="/themes/ucsc-omeka/nivo-slides/03.jpg" alt="slideshow image"  /></a>
-        <a><img src="/themes/ucsc-omeka/nivo-slides/04.jpg" alt="slideshow image" /></a>
-    </div>
-</div>
-
+<?php ucsc_slideshow();
+?>
 <div id="primary">
     <div id="ribbonleft">
     	<div id="ribbonright">
@@ -18,12 +9,12 @@
                 <h2>Recent <strong>Exhibits</strong></h2>
                 <div class="featured-first featured-content">
 					<?php  
-                    	$exhibits = exhibit_builder_recent_exhibits(3); 
+					$exhibits = get_records('Exhibit', array('featured' => true,'sort_field' => 'added', 'sort_dir' => 'd'), 3);
                     	foreach(loop('files', $exhibits) as $exhibit):
                         	echo '<div class="item"><a href="'.$exhibit->getRecordUrl() .'">' .file_image('square_thumbnail', array(), $exhibit->getFile()) .'</a>';
 							echo '<h3><a href="'.$exhibit->getRecordUrl() .'">' .$exhibit->title.'</a></h3></div>';
                     	endforeach;
-                	?>
+                ?>
                     <p class="more"><a href="/exhibits/browse">More...</a></p>
                 </div>
             </div>

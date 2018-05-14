@@ -2,7 +2,7 @@ jQuery(document).ready(function() {
 	
 /* Move audio and video to correct location */
 
-	jQuery('#exhibit-content video').insertAfter ('#exhibit-content h1');
+//	jQuery('#exhibit-content video').insertAfter ('#exhibit-content h1');
 	
 	if(jQuery('#moving-image-item-type-metadata-player').length > 0){
 		jQuery('#itemfiles .image-jpeg').addClass('hidden');
