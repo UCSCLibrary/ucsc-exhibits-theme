@@ -52,18 +52,16 @@
 			});
         });
     </script>
-    <!-- Google Analytics script -->
-    <script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-2259271-22']);
-  _gaq.push(['_trackPageview']);
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-606RTPTKGF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+      gtag('config', 'G-606RTPTKGF', {"groups":"default","anonymize_ip":true,"link_attribution":true,"allow_ad_personalization_signals":false});
+      gtag('config', 'UA-2259271-22',   {"groups":"default","anonymize_ip":true,"link_attribution":true,"allow_ad_personalization_signals":false});
+    </script>
 </head>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
