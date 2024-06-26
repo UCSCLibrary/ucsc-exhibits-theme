@@ -458,7 +458,6 @@ table {
 
   a {
     color: #00458c;
-    text-decoration: none;
   }
 
   a:link {
@@ -468,11 +467,11 @@ table {
     color: #3E628C;
   }
   a:hover {
-	  text-decoration: underline;
+	  color: #030060;
   }
   
   a:active {
-    color: #003368;
+    color: #030060;
   }
   
   a img {
